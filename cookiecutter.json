@@ -1,0 +1,34 @@
+{
+  "name": "My Awesome Project",
+  "slug": "{{ cookiecutter.name.lower()|replace(' ', '-')|replace('.', '-')|trim() }}",
+  "description": "",
+  "version": "1.0.0",
+  "framework": [
+    "None",
+    "React",
+    "Vue"
+  ],
+  "ui_library": [
+    "None",
+    "Bootstrap",
+    "Tailwind"
+  ],
+  "frontend_pipeline": [
+    "None",
+    "Gulp",
+    "Vite"
+  ],
+  "has_plugins_config": "n",
+  "_copy_without_render": [
+    "app",
+    "bootstrap",
+    "config",
+    "database",
+    "public",
+    "resources",
+    "routes",
+    "storage",
+    "tests",
+    "vendor"
+  ]
+}
