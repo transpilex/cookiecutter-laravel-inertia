@@ -55,20 +55,20 @@ def update_package_json(remove_dev_deps=None, remove_keys=None, scripts=None):
 
 def handle_js_runner(framework, ui_library):
     if framework == "React":
-        remove_dev_deps = ["@vitejs/plugin-vue", "@vue/eslint-config-typescript", "eslint-plugin-vue", "vue-tsc", "@inertiajs/vue3", "vue"]
+        remove_dev_deps = ["@vitejs/plugin-vue", "vue-tsc", "@inertiajs/vue3", "vue"]
         if ui_library == "Tailwind":
             remove_dev_deps.extend([])
         elif ui_library == "Bootstrap":
-            remove_dev_deps.extend(["@tailwindcss/vite", "prettier-plugin-tailwindcss", "tailwindcss"])
+            remove_dev_deps.extend(["@tailwindcss/vite", "tailwindcss"])
 
         update_package_json(remove_dev_deps=remove_dev_deps)
 
     elif framework == "Vue":
-        remove_dev_deps = ["@types/react",  "@types/react-dom", "@vitejs/plugin-react", "babel-plugin-react-compiler", "eslint-plugin-react", "eslint-plugin-react-hooks", "@inertiajs/react", "react", "react-dom"]
+        remove_dev_deps = ["@types/react",  "@types/react-dom", "@vitejs/plugin-react", "babel-plugin-react-compiler", "@inertiajs/react", "react", "react-dom"]
         if ui_library == "Tailwind":
             remove_dev_deps.extend([])
         elif ui_library == "Bootstrap":
-            remove_dev_deps.extend(["@tailwindcss/vite", "prettier-plugin-tailwindcss", "tailwindcss"])
+            remove_dev_deps.extend(["@tailwindcss/vite", "tailwindcss"])
 
         update_package_json(remove_dev_deps=remove_dev_deps)
 
