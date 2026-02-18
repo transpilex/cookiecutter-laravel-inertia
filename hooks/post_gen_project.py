@@ -10,8 +10,8 @@ SUCCESS = "\033[38;5;35m"
 
 
 def configure_framework_files(framework):
-    react_files = ["tsconfig-react.json"]
-    vue_files = ["tsconfig-vue.json"]
+    react_files = ["tsconfig-react.json", "resources/js/app.tsx", "resources/js/ssr.tsx"]
+    vue_files = ["tsconfig-vue.json", "resources/js/app.ts", "resources/js/ssr.ts"]
 
     if framework == "React":
         for file in vue_files:

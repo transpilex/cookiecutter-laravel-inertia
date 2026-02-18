@@ -1,6 +1,7 @@
 import { wayfinder } from '@laravel/vite-plugin-wayfinder';
 import laravel from 'laravel-vite-plugin';
 import { defineConfig } from 'vite';
+import path from 'path';
 
 {%- if cookiecutter.framework == 'React' %}
 import react from '@vitejs/plugin-react';
