@@ -10,12 +10,7 @@
     <link rel="icon" href="/favicon.ico" sizes="any">
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 
-    {%- if cookiecutter.framework == 'React' %}
-    @viteReactRefresh
-    @vite(['resources/js/app.tsx', "resources/js/pages/{$page['component']}.tsx"])
-    {%- elif cookiecutter.framework == 'Vue' %}
     @vite(['resources/js/app.ts', "resources/js/pages/{$page['component']}.vue"])
-    {%- endif %}
     @inertiaHead
 </head>
 
