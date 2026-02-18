@@ -38,14 +38,19 @@ def configure_framework_files(framework):
                 p.rename(new_name)
 
 
-def update_package_json(remove_dev_deps=None, remove_keys=None, scripts=None):
+def update_package_json(remove_dev_deps=None, remove_deps=None, remove_keys=None, scripts=None):
     remove_dev_deps = remove_dev_deps or []
+    remove_deps = remove_deps or []
     remove_keys = remove_keys or []
     scripts = scripts or {}
     package_json = Path("package.json")
     content = json.loads(package_json.read_text())
     for package_name in remove_dev_deps:
         content["devDependencies"].pop(package_name)
+
+    for package_name in remove_deps:
+        content["dependencies"].pop(package_name)
+
     for key in remove_keys:
         content.pop(key)
     content["scripts"].update(scripts)
@@ -55,22 +60,24 @@ def update_package_json(remove_dev_deps=None, remove_keys=None, scripts=None):
 
 def handle_js_runner(framework, ui_library):
     if framework == "React":
-        remove_dev_deps = ["@vitejs/plugin-vue", "vue-tsc", "@inertiajs/vue3", "vue"]
+        remove_dev_deps = ["@vitejs/plugin-vue", "vue-tsc"]
+        remove_deps = ["@inertiajs/vue3", "vue"]
         if ui_library == "Tailwind":
             remove_dev_deps.extend([])
         elif ui_library == "Bootstrap":
             remove_dev_deps.extend(["@tailwindcss/vite", "tailwindcss"])
 
-        update_package_json(remove_dev_deps=remove_dev_deps)
+        update_package_json(remove_dev_deps=remove_dev_deps, remove_deps=remove_deps)
 
     elif framework == "Vue":
-        remove_dev_deps = ["@types/react",  "@types/react-dom", "@vitejs/plugin-react", "babel-plugin-react-compiler", "@inertiajs/react", "react", "react-dom"]
+        remove_dev_deps = ["@types/react",  "@types/react-dom", "@vitejs/plugin-react", "babel-plugin-react-compiler"]
+        remove_deps = ["@inertiajs/react", "react", "react-dom"]
         if ui_library == "Tailwind":
             remove_dev_deps.extend([])
         elif ui_library == "Bootstrap":
             remove_dev_deps.extend(["@tailwindcss/vite", "tailwindcss"])
 
-        update_package_json(remove_dev_deps=remove_dev_deps)
+        update_package_json(remove_dev_deps=remove_dev_deps, remove_deps=remove_deps)
 
 
 def main():
