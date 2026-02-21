@@ -67,7 +67,7 @@ def handle_js_runner(framework, ui_library):
         elif ui_library == "Bootstrap":
             remove_dev_deps.extend(["@tailwindcss/vite", "tailwindcss"])
 
-        update_package_json(remove_dev_deps=remove_dev_deps, remove_deps=remove_deps)
+        # update_package_json(remove_dev_deps=remove_dev_deps, remove_deps=remove_deps)
 
     elif framework == "Vue":
         remove_dev_deps = ["@types/react",  "@types/react-dom", "@vitejs/plugin-react", "babel-plugin-react-compiler"]
@@ -77,7 +77,7 @@ def handle_js_runner(framework, ui_library):
         elif ui_library == "Bootstrap":
             remove_dev_deps.extend(["@tailwindcss/vite", "tailwindcss"])
 
-        update_package_json(remove_dev_deps=remove_dev_deps, remove_deps=remove_deps)
+        # update_package_json(remove_dev_deps=remove_dev_deps, remove_deps=remove_deps)
 
 
 def main():
@@ -85,7 +85,7 @@ def main():
         configure_framework_files("{{ cookiecutter.framework }}")
 
     if "{{ cookiecutter.framework }}" != "None":
-        handle_js_runner("{{ cookiecutter.framework }}", "{{ cookiecutter.ui_library }}")
+        # handle_js_runner("{{ cookiecutter.framework }}", "{{ cookiecutter.ui_library }}")
 
     print(SUCCESS + "Project initialized, keep up the good work!" + TERMINATOR)
 
