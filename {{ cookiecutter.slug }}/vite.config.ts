@@ -34,11 +34,7 @@ export default defineConfig({
             refresh: true,
         }),
         {%- if cookiecutter.framework == 'React' %}
-        react({
-            babel: {
-                plugins: ['babel-plugin-react-compiler'],
-            },
-        }),
+        react(),
         {%- endif %}
 
         {%- if cookiecutter.framework == 'Vue' %}

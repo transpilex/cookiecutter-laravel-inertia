@@ -18,8 +18,8 @@ createInertiaApp({
     title: (title) => (title ? `${title} - ${appName}` : appName),
     resolve: (name) => {
         const page: any = await resolvePageComponent(
-            `./pages/${name}.tsx`,
-            import.meta.glob('./pages/**/*.tsx')
+            `./views/${name}.tsx`,
+            import.meta.glob('./views/**/*.tsx')
         )
 
         page.default.layout ??= (page: React.ReactNode) => (
