@@ -19,7 +19,6 @@
     "config",
     "database",
     "public",
-    "resources",
     "routes",
     "storage",
     "tests"
