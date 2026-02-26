@@ -16,7 +16,7 @@ const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
 
 createInertiaApp({
     title: (title) => (title ? `${title} - ${appName}` : appName),
-    resolve: (name) => {
+    resolve: async (name) => {
         const page: any = await resolvePageComponent(
             `./views/${name}.tsx`,
             import.meta.glob('./views/**/*.tsx')
