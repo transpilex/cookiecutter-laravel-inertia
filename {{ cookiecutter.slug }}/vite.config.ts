@@ -73,7 +73,12 @@ export default defineConfig({
     resolve: {
         alias: {
             '@/': path.resolve(__dirname, './resources/js'),
+            {%- if cookiecutter.framework == 'React' %}
             '@/images': path.resolve(__dirname, 'resources/images'),
+            {%- endif %}
+            {%- if cookiecutter.framework == 'Vue' %}
+            '/images': path.resolve(__dirname, 'public/images'),
+            {%- endif %}
             '@/data': path.resolve(__dirname, 'resources/data'),
             {%- if cookiecutter.ui_library == 'Bootstrap' %}
             '@/scss': path.resolve(__dirname, 'resources/scss'),
