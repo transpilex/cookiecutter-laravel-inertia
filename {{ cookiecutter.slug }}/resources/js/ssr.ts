@@ -13,11 +13,20 @@ createServer(
             page,
             render: renderToString,
             title: (title) => (title ? `${title} - ${appName}` : appName),
-            resolve: (name) =>
-                resolvePageComponent(
-                    `./pages/${name}.vue`,
-                    import.meta.glob<DefineComponent>('./pages/**/*.vue'),
-                ),
+            resolve: async (name) => {
+              const page: any = await resolvePageComponent(
+                `/resources/js/views/${name}.vue`,
+                import.meta.glob<DefineComponent>('/resources/js/views/**/*.vue')
+              )
+
+              page.default.layout ??= (h: any, page: any) => {
+                return h(MainLayout, null, {
+                  default: () => page
+                })
+              }
+
+              return page
+            },
             setup: ({ App, props, plugin }) =>
                 createSSRApp({ render: () => h(App, props) }).use(plugin),
         }),
