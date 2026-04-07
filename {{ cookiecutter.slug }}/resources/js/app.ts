@@ -3,6 +3,7 @@ import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers'
 import { createApp, h, type DefineComponent } from 'vue'
 import { createPinia } from 'pinia'
 import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
+__register_plugin_imports__
 
 {%- if cookiecutter.ui_library == 'Bootstrap' %}
 import { createBootstrap } from 'bootstrap-vue-next'
