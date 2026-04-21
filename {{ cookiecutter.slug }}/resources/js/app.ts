@@ -28,10 +28,12 @@ createInertiaApp({
       import.meta.glob<DefineComponent>('/resources/js/views/**/*.vue')
     )
 
-    page.default.layout ??= (h: any, page: any) => {
-      return h(MainLayout, null, {
-        default: () => page
-      })
+    if (name.startsWith('admin/')) {
+      page.default.layout ??= (h: any, page: any) => {
+        return h(MainLayout, null, {
+          default: () => page
+        })
+      }
     }
 
     return page
