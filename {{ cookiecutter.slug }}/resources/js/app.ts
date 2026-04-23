@@ -7,6 +7,9 @@ __register_plugin_imports__
 
 {%- if cookiecutter.ui_library == 'Bootstrap' %}
 import { createBootstrap } from 'bootstrap-vue-next'
+{%- else %}
+import { preline } from './utils/preline'
+preline.init()
 {%- endif %}
 
 import { META_DATA } from './config/constants'
